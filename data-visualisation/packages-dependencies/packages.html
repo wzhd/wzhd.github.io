@@ -56,8 +56,8 @@ d3.json("packages.json", function(error, graph) {
         .data(graph.nodes)
         .enter().append("circle")
         .attr("class", "node")
-        .attr("r", 5)
-        .style("fill", function(d) { return color(d.group); })
+        .attr("r", function(d) { return 3*(Math.log(d.inbound + 2))+2})
+        .style("fill", function(d) { return color(Math.floor(Math.random()*20)); })
         .call(force.drag);
 
     node.append("title")
